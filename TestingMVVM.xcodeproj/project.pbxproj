@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		36FB925B6AD771ADDAC6036F /* Pods_TestingMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F01E6CE360F77CD975013CDB /* Pods_TestingMVVM.framework */; };
+		A36019FF21F5EFB800371D18 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36019FE21F5EFB800371D18 /* CharacterListViewController.swift */; };
+		A3BB53D921F76E4200C045F3 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BB53D821F76E4200C045F3 /* UIViewController+Extension.swift */; };
+		A3BB53DB21F7770700C045F3 /* CharacterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BB53DA21F7770700C045F3 /* CharacterCollectionCell.swift */; };
 		BDC99EE221E3C29500492624 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC99EE121E3C29500492624 /* AppDelegate.swift */; };
 		BDC99EE721E3C29500492624 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC99EE521E3C29500492624 /* Main.storyboard */; };
 		BDC99EEC21E3C29700492624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDC99EEB21E3C29700492624 /* Assets.xcassets */; };
@@ -59,6 +62,9 @@
 		2455E4D8D165F403DF2189ED /* Pods-TestingMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestingMVVM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestingMVVM/Pods-TestingMVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		4C7EC9DC687F009E2B6B9B3F /* Pods_TestingMVVMUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestingMVVMUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBEEF685695184339A6B292 /* Pods-TestingMVVMTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestingMVVMTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestingMVVMTests/Pods-TestingMVVMTests.release.xcconfig"; sourceTree = "<group>"; };
+		A36019FE21F5EFB800371D18 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
+		A3BB53D821F76E4200C045F3 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		A3BB53DA21F7770700C045F3 /* CharacterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionCell.swift; sourceTree = "<group>"; };
 		A593145FE3BD694BFEC7AF06 /* Pods-TestingMVVMUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestingMVVMUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestingMVVMUITests/Pods-TestingMVVMUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDC99EDE21E3C29500492624 /* TestingMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestingMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC99EE121E3C29500492624 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +179,7 @@
 			children = (
 				BDC99EE121E3C29500492624 /* AppDelegate.swift */,
 				BDC99EED21E3C29700492624 /* LaunchScreen.storyboard */,
+				BDC99EE521E3C29500492624 /* Main.storyboard */,
 				BDC99F1421E3C37900492624 /* Resources */,
 				BDC99F2621E3C4CA00492624 /* Source */,
 			);
@@ -210,7 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				BDC99F1721E3C3A500492624 /* Character List */,
-				BDC99EE521E3C29500492624 /* Main.storyboard */,
 				BDC99F4121E3C7FF00492624 /* ResultViewModel.swift */,
 			);
 			path = Modules;
@@ -231,7 +237,9 @@
 		BDC99F1721E3C3A500492624 /* Character List */ = {
 			isa = PBXGroup;
 			children = (
+				A36019FE21F5EFB800371D18 /* CharacterListViewController.swift */,
 				BDC99F2721E3C58C00492624 /* CharacterListViewModel.swift */,
+				A3BB53DA21F7770700C045F3 /* CharacterCollectionCell.swift */,
 			);
 			path = "Character List";
 			sourceTree = "<group>";
@@ -251,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				BDC99F2321E3C4B900492624 /* DateFormatter+Extensions.swift */,
+				A3BB53D821F76E4200C045F3 /* UIViewController+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -431,12 +440,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TestingMVVM/Pods-TestingMVVM-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -527,12 +544,15 @@
 				BDC99F3C21E3C63200492624 /* GetEpisodes.swift in Sources */,
 				BDC99F4021E3C63200492624 /* APIResult.swift in Sources */,
 				BDC99F1F21E3C44300492624 /* Previews.swift in Sources */,
+				A3BB53DB21F7770700C045F3 /* CharacterCollectionCell.swift in Sources */,
 				BDC99F3A21E3C63200492624 /* APIRequest.swift in Sources */,
+				A36019FF21F5EFB800371D18 /* CharacterListViewController.swift in Sources */,
 				BDC99F4221E3C7FF00492624 /* ResultViewModel.swift in Sources */,
 				BDC99F3921E3C63200492624 /* SelectCharacter.swift in Sources */,
 				BDC99F3621E3C63200492624 /* SelectLocation.swift in Sources */,
 				BDC99F2021E3C44300492624 /* Location.swift in Sources */,
 				BDC99EE221E3C29500492624 /* AppDelegate.swift in Sources */,
+				A3BB53D921F76E4200C045F3 /* UIViewController+Extension.swift in Sources */,
 				BDC99F2421E3C4B900492624 /* DateFormatter+Extensions.swift in Sources */,
 				BDC99F3E21E3C63200492624 /* APIClient.swift in Sources */,
 			);
@@ -711,7 +731,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VLLH384AC4;
+				DEVELOPMENT_TEAM = 55V4KQ8R32;
 				INFOPLIST_FILE = "$(SRCROOT)/TestingMVVM/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -730,7 +750,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VLLH384AC4;
+				DEVELOPMENT_TEAM = 55V4KQ8R32;
 				INFOPLIST_FILE = "$(SRCROOT)/TestingMVVM/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

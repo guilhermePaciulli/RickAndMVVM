@@ -8,27 +8,38 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 struct CharacterListViewModel {
     
     var title: String = "Characters"
-    var characters: [CharacterViewModel]
+    var feed: Observable<[CharacterViewModel]>
+    var onError: Observable<Error>
+    var load = PublishSubject<Void>()
     
-    init(characters: [CharacterViewModel]) {
-        self.characters = characters
-    }
-    
-    func fetchCharacters(completion: @escaping (ResultViewModel<[Character]>) -> ()) {
-        APIClient.shared.send(GetCharacters(), completion: { results in
-            switch results {
-            case .success(let charResults):
-                completion(ResultViewModel.success(charResults.results))
-                break
-            case .failure(let error):
-                completion(ResultViewModel.failure(ErrorViewModel(title: error.message, description: "Sorry for the problem")))
-                break
-            }
-        })
+    init() {
+        let charFeed = Observable<[CharacterViewModel]>.create{ observer in
+            APIClient.shared.send(GetCharacters(), completion: { results in
+                switch results {
+                case .success(let charResults):
+                    observer.onNext(charResults.results.map({ CharacterViewModel(character: $0) }))
+                    observer.onCompleted()
+                case .failure(let error):
+                    observer.onError(ErrorViewModel(error: error))
+                }
+            })
+            
+            return Disposables.create()
+        }
+        
+        let response = self.load.startWith(()).flatMapLatest({ _ in
+            return charFeed.materialize()
+        }).share().observeOn(MainScheduler.instance)
+
+        
+        
+        
     }
     
 }
@@ -40,6 +51,12 @@ struct CharacterViewModel {
     
     init(character: Character) {
         self.name = character.name
-        //        self.image =
+//            self.image =
     }
+}
+
+enum RequestError {
+    case fourOfour
+    case fourOfive
+    case fourOten
 }

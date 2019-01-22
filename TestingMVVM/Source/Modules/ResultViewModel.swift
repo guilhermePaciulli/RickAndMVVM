@@ -13,7 +13,12 @@ enum ResultViewModel<Value> {
     case failure(ErrorViewModel)
 }
 
-struct ErrorViewModel {
+struct ErrorViewModel: Error {
     let title: String?
     let description: String?
+    
+    init(error: APIError) {
+        self.title = "Connection Error"
+        self.description = error.message
+    }
 }
