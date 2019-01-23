@@ -14,9 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    let initialStoryboard: String = "Character"
+    let initialViewController: String = "CharacterList"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let initalStoryboard = UIStoryboard(name: self.initialStoryboard, bundle: nil)
+        initalStoryboard.instantiateViewController(withIdentifier: self.initialViewController)
+        
         return true
     }
 

@@ -55,6 +55,21 @@ class Character: Codable {
         self.created = DateFormatter.standarizedDateFormatter.date(from: try container.decode(String.self, forKey: .created))!
     }
     
+    init(id: Int, name: String, status: Status, species: String, type: String, gender: Gender, origin: LocationPreview, location: LocationPreview, image: URL, episode: [EpisodePreview], url: URL, created: Date) {
+        self.id = id
+        self.name = name
+        self.status = status
+        self.species = species
+        self.type = type
+        self.gender = gender
+        self.origin = origin
+        self.location = location
+        self.image = image
+        self.episode = episode
+        self.url = url
+        self.created = created
+    }
+    
 }
 
 enum Gender: String, Codable {
